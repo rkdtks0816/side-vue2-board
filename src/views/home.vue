@@ -71,7 +71,8 @@ export default {
             postsCount: 0,
             viewPageCount: 10,
             confirmMessage: null,
-            alertMessage: null
+            alertMessage: null,
+            address: 'http://59.3.14.15:8005'
         }
     },
     mounted() {
@@ -81,12 +82,12 @@ export default {
     methods: {
         async loadPosts() {
             this.currPageNo = (this.$route.query.page) ? this.$route.query.page : 1;
-            let response = await fetch(`http://localhost:3000/posts?page_no=${this.currPageNo}`)
+            let response = await fetch(`${this.address}/posts?page_no=${this.currPageNo}`)
             let rows = await response.json();
             this.posts = rows.posts;
         },            
         async loadCount() {
-            let response = await fetch(`http://localhost:3000/posts/count`)
+            let response = await fetch(`${this.address}/posts/count`)
             let result = await response.json();
             this.postsCount = result.result.count;
         },

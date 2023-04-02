@@ -36,7 +36,8 @@ export default {
             inputTitle: "",
             inputContent: "",
             closeAlert:false,
-            alertMessage: ''
+            alertMessage: '',
+            address: 'http://59.3.14.15:8005'
         }
     },
     mounted() {
@@ -45,7 +46,7 @@ export default {
     methods: {
         async loadBeforePost() {
             const postId = this.$route.params.post_id;
-            let response = await fetch(`http://localhost:3000/posts/post?post_id=${postId}`);
+            let response = await fetch(`${this.address}/posts/post?post_id=${postId}`);
             let result = await response.json();
             if (!result.success) {
                 return alert(result.message);
@@ -68,7 +69,7 @@ export default {
                 return;
             }
 
-            const response = await fetch('http://localhost:3000/posts',{
+            const response = await fetch(`${this.address}/posts`,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',

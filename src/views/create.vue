@@ -39,7 +39,8 @@ export default {
             inputTitle: "",
             inputContent: "",
             alertMessage: null,
-            uploadImageFile: ''
+            uploadImageFile: '',
+            address: 'http://59.3.14.15:8005'
         }
     },
     methods: {
@@ -65,7 +66,7 @@ export default {
                 return;
             }
 
-            const response = await fetch('http://localhost:3000/posts',{
+            const response = await fetch(`${this.address}/posts`,{
                 method: 'POST',
                 headers: {
                     'authorization': existsToken

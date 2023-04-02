@@ -49,12 +49,13 @@ export default {
             inputId: "",
             inputPwd: "",
             closeAlert: false,
-            alertMessage: ''
+            alertMessage: '',
+            address: 'http://59.3.14.15:8005'
         }
     },
     methods: {
         async onClickLogin() {
-            let response = await fetch(`http://localhost:3000/users?login_id=${this.inputId}&login_pwd=${this.inputPwd}`)
+            let response = await fetch(`${this.address}/users?login_id=${this.inputId}&login_pwd=${this.inputPwd}`)
             let result = await response.json();
             if (!result.success) {
                 this.alertMessage = result.message;

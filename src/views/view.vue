@@ -77,7 +77,8 @@ export default {
             modalType: '',
             confirmMessage: null,
             alertMessage: null,
-            imgSrc: ''
+            imgSrc: '',
+            address: 'http://59.3.14.15:8005'
         }
     },
     mounted() {
@@ -87,7 +88,7 @@ export default {
     methods: {
         async loadPost() {
             this.postId = this.$route.params.post_id;
-            let response = await fetch(`http://localhost:3000/posts/post?post_id=${this.postId}`);
+            let response = await fetch(`${this.address}/posts/post?post_id=${this.postId}`);
             let result = await response.json();
             if (!result.success) {
                 this.alertMessage = result.message;
@@ -119,7 +120,7 @@ export default {
             }
             const existsToken = this.$cookies.get('token');             
             
-            let response = await fetch(`http://localhost:3000/posts?post_id=${postId}&user_id=${userId}`, {
+            let response = await fetch(`${this.address}/posts?post_id=${postId}&user_id=${userId}`, {
                 method: 'DELETE',
                 headers: {'authorization': existsToken}
             })
@@ -132,7 +133,7 @@ export default {
         },
         async loadComments() {
             this.comments = [];
-            let response = await fetch(`http://localhost:3000/comments?post_id=${this.postId}`)
+            let response = await fetch(`${this.address}/comments?post_id=${this.postId}`)
             let rows = await response.json();
             this.comments = rows.comments;
         },
@@ -148,7 +149,7 @@ export default {
                 return;
             }
 
-            await fetch('http://localhost:3000/comments',{
+            await fetch(`${this.address}/comments`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
@@ -176,7 +177,7 @@ export default {
                 return;
             }
             
-            let response = await fetch(`http://localhost:3000/comments?comment_id=${commentId}&post_id=${postId}&user_id=${userId}`, {
+            let response = await fetch(`${this.address}/comments?comment_id=${commentId}&post_id=${postId}&user_id=${userId}`, {
                 method: 'DELETE',
                 headers: {'authorization': existsToken}
             })

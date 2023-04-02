@@ -58,7 +58,8 @@ export default {
             inputPwd: "",
             checkPwd: "",
             closeAlert:false,
-            alertMessage: ''
+            alertMessage: '',
+            address: 'http://59.3.14.15:8005'
         }
     },
     methods: {
@@ -67,7 +68,7 @@ export default {
                 this.alertMessage = "비밀번호가 다릅니다.";
                 this.closeAlert = true;
             }
-            await fetch('http://localhost:3000/users',{
+            await fetch(`${this.address}/users`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
