@@ -1,15 +1,13 @@
 const mysql = require('mysql');
 
 const pool = mysql.createPool({
-    host:'localhost',
+    host:'59.3.14.15',
     user:'root',
     password:'1234',
-    port:3307,
+    port:8006,
     database:'board_db',
     dateStrings: 'date'
-});
-
-const today = new Date();
+})
 
 const query = (con, sql)=>{
     return new Promise((resolve, reject)=>{
@@ -27,6 +25,7 @@ const getConnection = ()=>{
     return new Promise((resolve, reject)=>{
         pool.getConnection((err, con)=>{            
             if(err) {
+                console.log("error : ", err)
                 con.release()
                 reject(err)
             }
