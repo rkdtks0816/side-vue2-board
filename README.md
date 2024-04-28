@@ -1,24 +1,3 @@
-# board
+## 2022.02 ~ 2022.03 나무인텔리전스
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 입사 교육기간 중 개발한 vue2 기반 게시판입니다.
